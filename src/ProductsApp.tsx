@@ -1,10 +1,18 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { StackNavigator } from './presentation/navigation/StackNavigator';
+import * as eva from '@eva-design/eva';
+import { ApplicationProvider, Layout, Text } from '@ui-kitten/components';
+import { useColorScheme } from 'react-native';
 
 export const ProductsApp = () => {
+
+  const colorScheme = useColorScheme();
+  const theme = colorScheme === 'dark' ? eva.dark : eva.light;
   return (
-    <NavigationContainer>
-        <StackNavigator />
-    </NavigationContainer>
+    <ApplicationProvider {...eva} theme={theme}>
+      <NavigationContainer>
+          <StackNavigator />
+      </NavigationContainer>
+    </ApplicationProvider>
   );
 };
